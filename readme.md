@@ -1,8 +1,8 @@
-=== EasyTab ===
+# EasyTab
 
 EasyTab is a WooCommerce plugin for automatic AI-powered content generation in product tabs.
 
-== Description ==
+## Description
 
 EasyTab is an addon plugin for WooCommerce on WordPress, designed to automatically enrich product descriptions by generating content for WooCommerce product tabs using advanced artificial intelligence.
 
