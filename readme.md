@@ -39,7 +39,7 @@ Yes, EasyTab is designed to be compatible with most WooCommerce extensions.
 
 = 1.0.0 =
 * Initial release with AI-powered content generation for WooCommerce product tabs.
-* Supports OpenAI's ChatGPT and Anthropic's Claude.
+* Supports OpenAI's ChatGPT.
 * Compatible with WooCommerce and other WordPress plugins.
 
 == Upgrade Notice ==
