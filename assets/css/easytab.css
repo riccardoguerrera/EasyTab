@@ -1,0 +1,110 @@
+form#easytab-ai-prompt details {
+    width: 50%;
+    cursor: pointer;
+}
+
+form#easytab-ai-prompt details summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+form#easytab-ai-prompt details div.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    background-color: ghostwhite;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+form#easytab-ai-prompt details summary::before {
+    content: "";
+    display: block;
+    background-image: url("../img/help.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    width: 15px;
+    height: 15px;
+    padding-right: 10px;
+}
+
+div.repeater-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+div.repeater-field-controls {
+    width: auto;
+    margin-left: 30px;
+}
+
+div.repeater-field-controls span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.repeater-field-controls span.add::after {
+    content: "";
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+div.repeater-field-controls span.remove::after {
+    content: "";
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+/**/
+
+.wc-tabs {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    width: auto;
+    display: inline-block;
+}
+
+.wc-tabs button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.wc-tabs button:hover {
+    background-color: #ddd;
+}
+
+.wc-tabs button.active {
+    background-color: #ccc;
+}
+
+.wc-tab-section {
+    padding: 6px 12px;
+}
