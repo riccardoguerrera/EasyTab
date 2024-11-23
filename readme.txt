@@ -3,13 +3,13 @@
 Contributors: rgwebdev
 Tags: WooCommerce, AI, tabs
 Requires at least: 6.6
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 1.0.0
 Requires PHP: 7.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-EasyTab is a WooCommerce plugin for automatic AI-powered content generation in product tabs.
+EasyTab is a WordPress plugin for automatic generation of AI content in WooCommerce product tabs.
 
 == Description ==
 
@@ -23,9 +23,23 @@ The free version of EasyTab is available in the WordPress repository. For advanc
 * **Easy Integration**: Integrates seamlessly with your WooCommerce store and other WordPress plugins.
 * **SEO-Friendly and Multilingual**: Optimizes your product descriptions for better search engine visibility and supports a global audience.
 
+### External Services
+
+**ChatGPT by OpenAI**
+
+- **Purpose**: EasyTab integrates with ChatGPT to generate dynamic and relevant content for product tabs directly within WooCommerce.
+- **Data Sent**: Sends queries based on product data to ChatGPT whenever a product tab is loaded.
+- **When**: Data is sent to ChatGPT each time a product page is accessed by a user.
+- **Service Provider**: OpenAI
+- **Terms of Service and Privacy Policy**:
+  - [Terms of Service](https://openai.com/terms/)
+  - [Privacy Policy](https://openai.com/privacy/)
+
+Please review these policies to understand how your data is handled by OpenAI.
+
 ### Getting Started
 1. **Install and Activate the Plugin**: Download and install EasyTab on your WordPress site.
-2. **Create an AI Platform Account**: Sign up on AI platform ([OpenAI](https://openai.com).
+2. **Create an AI Platform Account**: Sign up on AI platform ([OpenAI](https://openai.com)).
 3. **Generate an API Key**: Obtain your API key from the AI platform and note the specific costs and terms of use for each service.
 4. **Configure Plugin Settings**: Enter your API key in the plugin settings and choose your preferred AI platform.
 

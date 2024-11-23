@@ -166,14 +166,14 @@
 
 		if ($hook === 'toplevel_page_easytab') {
 
-			wp_enqueue_script('easytab', plugins_url('assets/js/easytab.js', EASYTAB_FILE), array('jquery'), '1.0', true);
-			wp_enqueue_style('easytab', plugins_url('assets/css/easytab.css', EASYTAB_FILE), null, '1.0');
+			wp_enqueue_script('easytab', plugins_url('assets/js/easytab.js', EASYTAB_FILE), array('jquery'), EASYTAB_VERSION, true);
+			wp_enqueue_style('easytab', plugins_url('assets/css/easytab.css', EASYTAB_FILE), null, EASYTAB_VERSION);
 
 		}
 
 		if ($hook === 'easytab_page_easytab_debug_log') {
 
-			wp_enqueue_style('easytab', plugins_url('assets/css/easytab-dl.css', EASYTAB_FILE), null, '1.0');
+			wp_enqueue_style('easytab', plugins_url('assets/css/easytab-dl.css', EASYTAB_FILE), null, EASYTAB_VERSION);
 
         }
 
