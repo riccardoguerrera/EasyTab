@@ -27,6 +27,10 @@
 
     define('EASYTAB_VERSION', '1.0.0');
 
+    define('EASYTAB_FILE', __FILE__);
+    define('EASYTAB_PATH', plugin_dir_path(__FILE__));
+    define('EASYTAB_URL', plugin_dir_url(__FILE__));
+
 
     function easytab_check_woocommerce_dependency() {
 
@@ -39,11 +43,13 @@
 
     function easytab_show_woocommerce_dependency_notice() {
 
-    ?>
+        ?>
+
         <div class="error notice">
             <p><?php esc_html_e('The "EasyTab" plugin requires WooCommerce to work. WooCommerce is not active, so the plugin has been disabled.', 'easytab'); ?></p>
         </div>
-    <?php
+
+        <?php
 
     }
 
@@ -52,7 +58,7 @@
 
 	function easytab_load_textdomain() {
 
-		load_plugin_textdomain('easytab', false, dirname(plugin_basename(__FILE__ )). '/languages/');
+		load_plugin_textdomain('easytab', false, basename(dirname(EASYTAB_FILE)) . '/languages');
 
 	}
 
@@ -65,12 +71,10 @@
 			return $mofile;
 		}
 
-		$en_mofile = dirname($mofile) . '/' . $domain . '-en_US.mo';
+        $en_mofile = EASYTAB_PATH . 'languages/' . $domain . '-en_US.mo';
 
 		if (!file_exists($mofile) && file_exists($en_mofile)) {
-
 			return $en_mofile;
-
 		}
 
 		return $mofile;
@@ -92,7 +96,7 @@
 
     }
 
-    register_activation_hook(__FILE__, 'easytab_check_and_register_option');
+    register_activation_hook(EASYTAB_FILE, 'easytab_check_and_register_option');
 
 
     function easytab_init_plugin() {
@@ -142,9 +146,6 @@
 
 	function easytab_crb_load() {
 
-        define('EASYTAB_PATH', plugin_dir_path(__FILE__));
-        define('EASYTAB_URL', plugin_dir_url(__FILE__));
-
         require_once('vendor/autoload.php');
 
         require_once 'helper/log.php';
@@ -153,7 +154,7 @@
         require_once 'admin/settings-page.php';
         require_once 'admin/meta-box.php';
         require_once 'admin/debug-log.php';
-        require_once 'includes/easytab-content.php';
+        require_once 'includes/prompt.php';
         require_once 'includes/ai-connection/chat-gpt/connect.php';
 
 	}
@@ -163,10 +164,18 @@
 
 	function easytab_script($hook) {
 
-		if ($hook !== 'toplevel_page_easytab') return;
+		if ($hook === 'toplevel_page_easytab') {
 
-		wp_enqueue_script('easytab', plugins_url('assets/js/easytab.js', __FILE__), array('jquery'), '1.0', true);
-		wp_enqueue_style('easytab', plugins_url('assets/css/easytab.css', __FILE__), null, '1.0');
+			wp_enqueue_script('easytab', plugins_url('assets/js/easytab.js', EASYTAB_FILE), array('jquery'), '1.0', true);
+			wp_enqueue_style('easytab', plugins_url('assets/css/easytab.css', EASYTAB_FILE), null, '1.0');
+
+		}
+
+		if ($hook === 'easytab_page_easytab_debug_log') {
+
+			wp_enqueue_style('easytab', plugins_url('assets/css/easytab-dl.css', EASYTAB_FILE), null, '1.0');
+
+        }
 
 	}
 

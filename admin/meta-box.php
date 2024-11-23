@@ -1,5 +1,8 @@
 <?php
 
+    defined('ABSPATH') || exit;
+
+
 	function easytab_add_metabox() {
 
 		add_meta_box(

@@ -1,9 +1,14 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "66c2e6e718045fb2c443bf352876765e",
     "packages": [
         {
             "name": "umpirsky/language-list",
             "version": "v1.1",
-            "version_normalized": "1.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/umpirsky/language-list.git",
@@ -23,7 +28,6 @@
                 "symfony/locale": "^2.7|^3.0",
                 "umpirsky/list-generator": "^1.1"
             },
-            "time": "2018-05-08T16:54:36+00:00",
             "type": "library",
             "extra": {
                 "copy-file": {
@@ -31,7 +35,6 @@
                     "vendor/umpirsky/list-generator/docker-compose.yml": "./"
                 }
             },
-            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -47,9 +50,16 @@
                 "issues": "https://github.com/umpirsky/language-list/issues",
                 "source": "https://github.com/umpirsky/language-list/tree/master"
             },
-            "install-path": "../umpirsky/language-list"
+            "time": "2018-05-08T16:54:36+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": []
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }

@@ -1,5 +1,8 @@
 <?php
 
+	defined('ABSPATH') || exit;
+
+
 	function easytab_sanitize_options($options) {
 
 		foreach ($options as $key => $option) {

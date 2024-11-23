@@ -1,5 +1,8 @@
 <?php
 
+	defined('ABSPATH') || exit;
+
+
 	function easytab_chatgpt_connection($request_type, $prompt = null) {
 
 		$options = get_option('easytab_settings');

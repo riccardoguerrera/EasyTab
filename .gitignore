@@ -1,0 +1,17 @@
+/vendor/composer
+/vendor/umpirsky/language-list/bin
+/vendor/umpirsky/language-list/data/*
+!/vendor/umpirsky/language-list/data/en_US
+!/vendor/umpirsky/language-list/data/it_IT
+!vendor/umpirsky/language-list/data/fr_FR
+!/vendor/umpirsky/language-list/data/de_DE
+
+/vendor/umpirsky/language-list/data/*/*.csv
+/vendor/umpirsky/language-list/data/*/*.sql
+/vendor/umpirsky/language-list/data/*/*.yaml
+/vendor/umpirsky/language-list/data/*/*.xml
+/vendor/umpirsky/language-list/data/*/*.html
+/vendor/umpirsky/language-list/data/*/*.json
+/vendor/umpirsky/language-list/data/*/*.txt
+/vendor/umpirsky/language-list/data/*/*.xliff
+

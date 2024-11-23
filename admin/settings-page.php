@@ -1,5 +1,8 @@
 <?php
 
+    defined('ABSPATH') || exit;
+
+
     function easytab_options_page() {
 
         add_menu_page(
@@ -24,6 +27,25 @@
         }
 
 	?>
+
+        <div id="easytab-pro-banner">
+
+            <img src="<?php echo EASYTAB_URL; ?>assets/img/easytab-logo.png">
+
+            <a href="https://easytab.pro" rel="nofollow" target="_blank"><button><?php esc_html_e('GET PRO VERSION!', 'easytab'); ?></button></a>
+            <a href="https://youtu.be/rS05e_R8KdM?si=6mQn3JLoaowy88Qz" rel="nofollow" target="_blank"><button><?php esc_html_e('EASYTAB PRO PREVIEW', 'easytab'); ?></button></a>
+
+            <div>
+                <h4><b><?php esc_html_e('EasyTab Pro', 'easytab'); ?></b><?php esc_html_e(' features', 'easytab'); ?></h4>
+                <ul>
+                    <li><?php esc_html_e('Anthropic\'s Claude AI', 'easytab'); ?></li>
+                    <li><?php esc_html_e('Powered AI Prompt Wizard', 'easytab'); ?></li>
+                    <li><?php esc_html_e('More efficient and configurable', 'easytab'); ?></li>
+                    <li><?php esc_html_e('Continuous assistance and support', 'easytab'); ?></li>
+                </ul>
+            </div>
+
+        </div>
 
         <div class="wrap">
             <h1><?php esc_html(get_admin_page_title()); ?></h1>

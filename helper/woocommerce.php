@@ -1,5 +1,7 @@
 <?php
 
+	defined('ABSPATH') || exit;
+
     function easytab_helper_get_woo_default_product_tabs() {
 
 		$product = null;
@@ -17,7 +19,7 @@
 	    if (is_admin() || (isset($product) && (($product->has_weight()) || $product->has_dimensions()))) {
 
 		    $wc_tabs["additional_information"] = array(
-			    "title"    => apply_filters( 'woocommerce_product_additional_information_heading', __( 'Additional information', 'easytab' ) ),
+			    "title"    => apply_filters('woocommerce_product_additional_information_heading', __('Additional information', 'easytab')),
 			    "priority" => 20,
 			    "callback" => "woocommerce_product_additional_information_tab"
 		    );
