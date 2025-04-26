@@ -1,0 +1,80 @@
+div.repeater-field {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+}
+
+div.repeater-field-controls {
+	width: auto;
+	margin-left: 30px;
+}
+
+div.repeater-field-controls span {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+div.repeater-field-controls span.add::after {
+	content: "";
+	display: block;
+	background-image: url("../img/plus.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	width: 15px;
+	height: 15px;
+}
+
+div.repeater-field-controls span.remove::after {
+	content: "";
+	display: block;
+	background-image: url("../img/minus.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	width: 15px;
+	height: 15px;
+}
+
+/**/
+
+#easytab-pro-eula-wrap {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#easytab-pro-eula-content {
+	width: 80%;
+	height: 500px;
+	overflow-y: scroll;
+	border: 1px solid darkgray;
+	padding: 20px;
+	background-color: #fff;
+}
+
+#easytab-pro-eula-content + button:hover {
+	background-color: #000;
+	color: #fff;
+}
+
+#easytab-pro-eula-content + button {
+	width: 200px;
+	height: 60px;
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+	vertical-align: center;
+	text-transform: uppercase;
+	border: 1px solid darkgray;
+	font-size: 25px;
+	cursor: pointer;
+	transition: background-color 0.4s;
+	margin-top: 50px;
+}
