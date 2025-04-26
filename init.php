@@ -13,7 +13,7 @@
 		require_once 'admin/debug-log.php';
 		require_once 'includes/prompt.php';
 		require_once 'includes/ai-connection/chat-gpt/connect.php';
-		require_once 'includes/ai-connection/claude__premium_only/connect.php';
+		require_once 'includes/ai-connection/claude/connect.php';
 
 	}
 

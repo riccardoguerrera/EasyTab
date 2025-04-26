@@ -3,35 +3,36 @@
 	defined('ABSPATH') || exit;
 
 	
-	function easytab_chatgpt_connection($request_type, $prompt = null, $tab = null) {
+	function easytab_claude_connection($request_type, $prompt = null, $tab = null) {
 
 		$options = get_option('easytab_settings');
 
-		$api_key = array_key_exists('chat_gpt_ai_api_key', $options) ? $options['chat_gpt_ai_api_key'] : null;
-
-		$model = array_key_exists('chat_gpt_ai_model', $options) ? $options['chat_gpt_ai_model'] : null;
-		$output_preset_type = array_key_exists('output_preset_for_' . str_replace('-', '_', $tab) . '_tab_target_and_chat_gpt_ai'
-			, $options) ? (intval($options['output_preset_for_' . str_replace('-', '_', $tab) . '_tab_target_and_chat_gpt_ai'])) : 0;
-		$output_preset_params = get_option('easytab_chat_gpt_ai_output_preset');		
+		$api_key = array_key_exists('claude_ai_api_key', $options) ? $options['claude_ai_api_key'] : null;
+		$model = array_key_exists('claude_ai_model', $options) ? $options['claude_ai_model'] : null;
+		$output_preset_type = array_key_exists('output_preset_for_' . str_replace('-', '_', $tab) . '_tab_target_and_claude_ai'
+			, $options) ? (intval($options['output_preset_for_' . str_replace('-', '_', $tab) . '_tab_target_and_claude_ai'
+			])) : 0;
+		$output_preset_params = get_option('easytab_claude_ai_output_preset');
 
 		if (empty($request_type) || empty($prompt) || empty($api_key) || empty($model)) return;
 
 		$headers = array(
-			'Authorization' => 'Bearer ' . $api_key,
-			'Content-Type' => 'application/json',
+			'X-Api-Key' => $api_key,
+			'anthropic-version' => '2023-06-01',
+			'Content-Type' => 'application/json'
 		);
 
 		if ($request_type == 'chat') {
 
-			$url = 'https://api.openai.com/v1/chat/completions';
+			$url = 'https://api.anthropic.com/v1/messages';
 
 			$data = array(
 				'model' => $model,
 				'messages' => array(array('role' => 'user', 'content' => $prompt)),
+				'max_tokens' => $output_preset_params[$output_preset_type]['max_tokens'],
 				'temperature' => $output_preset_params[$output_preset_type]['temperature'],
 				'top_p' => $output_preset_params[$output_preset_type]['top_p'],
-				'frequency_penalty' => $output_preset_params[$output_preset_type]['frequency_penalty'],
-				'presence_penalty' => $output_preset_params[$output_preset_type]['presence_penalty']
+				'top_k' => $output_preset_params[$output_preset_type]['top_k'],
 			);
 
 			$response = wp_remote_post($url, array(
@@ -53,7 +54,7 @@
 				return false;
 			}
 
-			return $json_response['choices'][0]['message']['content'];
+			return $json_response['content'][0]['text'];
 
 		}
 
