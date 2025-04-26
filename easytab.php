@@ -2,181 +2,78 @@
 
 	/**
 	 * Plugin Name: EasyTab
-	 * Plugin URI: https://easytab.pro
-	 * Description: EasyTab helps you optimize Woocommerce tabs with the support of artificial intelligence.
-	 * Version: 1.0.0
+	 * Description: EasyTab helps you optimize WooCommerce Tabs with the support of artificial intelligence.
+	 * Version: 1.0.2
 	 * Author: rgwebdev
 	 * Author URI: https://riccardoguerrera.dev
 	 * Text Domain: easytab
 	 * Domain Path: /languages
 	 * Requires at least: 6.0
 	 * Requires PHP: 7.4
-	 * Copyright: Riccardo Guerrera - EasyTab
-	 * License: GNU General Public License v3.0
-	 * License URI: https://www.gnu.org/licenses/gpl.html
-	 */
+	 * Requires Plugins: woocommerce
+	**/
 
+	defined('ABSPATH') || exit;
 
-    defined('ABSPATH') || exit;
+	/**/
 
-
-    if (!function_exists('is_plugin_active')) {
-        include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    }
-
-
-    define('EASYTAB_VERSION', '1.0.0');
-
-    define('EASYTAB_FILE', __FILE__);
-    define('EASYTAB_PATH', plugin_dir_path(__FILE__));
-    define('EASYTAB_URL', plugin_dir_url(__FILE__));
-
-
-    function easytab_check_woocommerce_dependency() {
-
-        if (!is_plugin_active('woocommerce/woocommerce.php')) {
-            add_action('admin_notices', 'easytab_show_woocommerce_dependency_notice');
-            deactivate_plugins(plugin_basename(__FILE__));
-        }
-
-    }
-
-    function easytab_show_woocommerce_dependency_notice() {
-
-        ?>
-
-        <div class="error notice">
-            <p><?php esc_html_e('The "EasyTab" plugin requires WooCommerce to work. WooCommerce is not active, so the plugin has been disabled.', 'easytab'); ?></p>
-        </div>
-
-        <?php
-
-    }
-
-    add_action('admin_init', 'easytab_check_woocommerce_dependency');
-
-
-	function easytab_load_textdomain() {
-
-		load_plugin_textdomain('easytab', false, basename(dirname(EASYTAB_FILE)) . '/languages');
-
+	if (!function_exists('is_plugin_active')) {
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 
-	add_action('plugins_loaded', 'easytab_load_textdomain');
+	$easytab_plugin_basename = plugin_basename(__FILE__);
 
+	if ($easytab_plugin_basename === 'easytab/easytab.php') {
 
-	function easytab_set_english_language_as_fallback($mofile, $domain) {
+		if (!is_plugin_active('woocommerce/woocommerce.php')) {
 
-		if ($domain !== 'easytab') {
-			return $mofile;
+			deactivate_plugins(plugin_basename(__FILE__));
+			
+			add_action('admin_notices', function () {
+
+				?>
+
+					<div class="error notice">
+				
+						<p>
+					
+							<?php 
+				
+								esc_html_e('The "EasyTab" plugin requires WooCommerce to work. WooCommerce is not active, so the plugin has been disabled.', 'easytab');
+							?>
+							
+						</p>
+				
+					</div>
+			
+				<?php 
+					
+			});
+	
 		}
 
-        $en_mofile = EASYTAB_PATH . 'languages/' . $domain . '-en_US.mo';
-
-		if (!file_exists($mofile) && file_exists($en_mofile)) {
-			return $en_mofile;
-		}
-
-		return $mofile;
-
 	}
 
-	add_filter('load_textdomain_mofile', 'easytab_set_english_language_as_fallback', 10, 2);
-
-
-	function easytab_check_and_register_option() {
-
-        $ai = array(
-            'chat_gpt'  => 'ChatGPT',
-        );
-
-        if (!get_option('easytab_ai')) {
-            add_option('easytab_ai', $ai);
-        }
-
-    }
-
-    register_activation_hook(EASYTAB_FILE, 'easytab_check_and_register_option');
-
-
-    function easytab_init_plugin() {
-
-        $installed_version = get_option('easytab_version');
-
-        if (!$installed_version) {
-			easytab_install();
-        } elseif (version_compare($installed_version, EASYTAB_VERSION, '<')) {
-			easytab_update_plugin($installed_version);
-        }
-
-    }
-
-    function easytab_install() {
-
-        $default_ai = array(
-            'chat_gpt'  => 'ChatGPT',
-        );
-
-        add_option('easytab_ai', $default_ai);
-
-        add_option('easytab_version', EASYTAB_VERSION);
-
-    }
-
-    function easytab_update_plugin($installed_version) {
-
-        if (version_compare($installed_version, EASYTAB_VERSION, '<')) {
-
-            $updated_ai = array(
-                'chat_gpt'  => 'ChatGPT',
-            );
-
-            update_option('easytab_ai', $updated_ai);
-
-        }
-
-        update_option('easytab_version', EASYTAB_VERSION);
-
-    }
-
-    add_action('init', 'easytab_init_plugin');
-
-
-    /**/
-
-	function easytab_crb_load() {
-
-        require_once('vendor/autoload.php');
-
-        require_once 'helper/log.php';
-        require_once 'helper/woocommerce.php';
-        require_once 'helper/admin.php';
-        require_once 'admin/settings-page.php';
-        require_once 'admin/meta-box.php';
-        require_once 'admin/debug-log.php';
-        require_once 'includes/prompt.php';
-        require_once 'includes/ai-connection/chat-gpt/connect.php';
-
+	if (!defined('EASYTAB_VERSION')) {
+		define('EASYTAB_VERSION', '1.0.2');
 	}
 
-	add_action('plugins_loaded', 'easytab_crb_load');
-
-
-	function easytab_script($hook) {
-
-		if ($hook === 'toplevel_page_easytab') {
-
-			wp_enqueue_script('easytab', plugins_url('assets/js/easytab.js', EASYTAB_FILE), array('jquery'), EASYTAB_VERSION, true);
-			wp_enqueue_style('easytab', plugins_url('assets/css/easytab.css', EASYTAB_FILE), null, EASYTAB_VERSION);
-
-		}
-
-		if ($hook === 'easytab_page_easytab_debug_log') {
-
-			wp_enqueue_style('easytab', plugins_url('assets/css/easytab-dl.css', EASYTAB_FILE), null, EASYTAB_VERSION);
-
-        }
-
+	if (!defined('EASYTAB_FILE')) {
+		define('EASYTAB_FILE', __FILE__);
 	}
-
-	add_action('admin_enqueue_scripts', 'easytab_script');
+	
+	if (!defined('EASYTAB_PATH')) {
+		define('EASYTAB_PATH', plugin_dir_path(__FILE__));
+	}
+	
+	if (!defined('EASYTAB_URL')) {
+		define('EASYTAB_URL', plugin_dir_url(__FILE__));
+	}
+	
+	if (!defined('EASYTAB_DOMAIN')) {
+		define('EASYTAB_DOMAIN', 'easytab');
+	}
+	
+	if (file_exists(EASYTAB_PATH . 'init.php')) {
+		require_once EASYTAB_PATH . 'init.php';
+	}
