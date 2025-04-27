@@ -4,7 +4,7 @@
 **Tags**: WooCommerce, AI, tabs  
 **Requires at least**: WordPress 6.4  
 **Tested up to**: WordPress 6.7  
-**Stable tag**: 1.0.2  
+**Stable tag**: 1.0.3  
 **Requires PHP**: 7.2  
 **License**: GPLv3 or later  
 **License URI**: [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)  
@@ -93,6 +93,9 @@ Yes, EasyTab is designed to be compatible with most WooCommerce extensions.
 ---
 
 ## Changelog
+
+### 1.0.3
+- Fixed CSS issues
 
 ### 1.0.2
 - Discontinued EasyTab Pro: all features are now included in the free open-source version.
