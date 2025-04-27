@@ -3,7 +3,7 @@
 	/**
 	 * Plugin Name: EasyTab
 	 * Description: EasyTab helps you optimize WooCommerce Tabs with the support of artificial intelligence.
-	 * Version: 1.0.2
+	 * Version: 1.0.3
 	 * Author: rgwebdev
 	 * Author URI: https://riccardoguerrera.dev
 	 * Text Domain: easytab
@@ -55,7 +55,7 @@
 	}
 
 	if (!defined('EASYTAB_VERSION')) {
-		define('EASYTAB_VERSION', '1.0.2');
+		define('EASYTAB_VERSION', '1.0.3');
 	}
 
 	if (!defined('EASYTAB_FILE')) {
