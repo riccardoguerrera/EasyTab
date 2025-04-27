@@ -1,16 +1,16 @@
-form#easytab-pro-ai-prompt details {
+form#easytab-ai-prompt details {
 	width: 50%;
 	cursor: pointer;
 }
 
-form#easytab-pro-ai-prompt details summary {
+form#easytab-ai-prompt details summary {
 	display: flex;
 	flex-direction: row;
 	justify-content: left;
 	align-items: center;
 }
 
-form#easytab-pro-ai-prompt details div.info {
+form#easytab-ai-prompt details div.info {
 	display: flex;
 	flex-direction: column;
 	justify-content: left;
@@ -24,7 +24,7 @@ form#easytab-pro-ai-prompt details div.info {
 	margin-top: 10px;
 }
 
-form#easytab-pro-ai-prompt details summary::before {
+form#easytab-ai-prompt details summary::before {
 	content: "";
 	display: block;
 	background-image: url("../img/help.png");
